@@ -1,0 +1,63 @@
+
+    @Override
+    public Book findBookById(String id) throws BookNotFoundException {
+        final String URL = "https://www.googleapis.com/books/v1/volumes/{id}";
+        ResponseEntity<SearchResult> apiResponseEntity = restTemplate.getForEntity(URL, SearchResult.class, id);
+        SearchResult searchResult = apiResponseEntity.getBody();
+        log.info("Search result --> {}", searchResult);
+        if (searchResult == null)
+            throw new BookNotFoundException(String.format("No book with this id %s found. search for a valid book", id));
+
+        String bookId = searchResult.getId();
+        VolumeInfo volumeInfo = searchResult.getVolumeInfo();
+        String title = volumeInfo.getTitle();
+        String description = volumeInfo.getDescription();
+        ;
+        ImageLink imageLink = volumeInfo.getImageLink();
+        String smallThumbnail = imageLink.getSmallThumbnail();
+        String thumbnails = imageLink.getThumbnail();
+        String previewLinks = volumeInfo.getPreviewLink();
+        String publisher = volumeInfo.getPublisher();
+        List<String> authors = volumeInfo.getAuthors();
+        Book book = new Book();
+        book.setId(bookId);
+        book.setAuthors(authors);
+        book.setTitle(title);
+        book.setPublisher(publisher);
+        book.setPreviewLink(previewLinks);
+        book.setDescription(description);
+        book.setSmallImage(smallThumbnail);
+        book.setImage(thumbnails);
+        return book;
+    }
+
+Search
+
+//        ResponseEntity<SearchApiResponse> apiResponseEntity = restTemplate.getForEntity(URL, SearchApiResponse.class);
+//        SearchApiResponse searchApiResponse = apiResponseEntity.getBody();
+//
+//        log.info("Search result --> {}", apiResponseEntity);
+//        assert searchApiResponse != null;
+//        return searchApiResponse.getSearchResultList().stream().map(items -> {
+//                    Book book = new Book();
+//                    String id = items.getId();
+//                    VolumeInfo volumeInfo = items.getVolumeInfo();
+//                    String title = volumeInfo.getTitle();
+//                    String description = volumeInfo.getDescription();
+//                    ImageLink imageLink = volumeInfo.getImageLink();
+//                    String smallThumbnail = imageLink.getSmallThumbnail();
+//                    String thumbnails = imageLink.getThumbnail();
+//                    String previewLinks = volumeInfo.getPreviewLink();
+//                    String publisher = volumeInfo.getPublisher();
+//                    List<String> authors = volumeInfo.getAuthors();
+//                    book.setId(id);
+//                    book.setAuthors(authors);
+//                    book.setTitle(title);
+//                    book.setPublisher(publisher);
+//                    book.setPreviewLink(previewLinks);
+//                    book.setDescription(description);
+//                    book.setSmallImage(smallThumbnail);
+//                    book.setImage(thumbnails);
+//                    return book;
+//                }
+//        ).collect(Collectors.toList());

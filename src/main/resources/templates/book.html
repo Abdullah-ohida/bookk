@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>My Book</h1>
+    <div class="cover">
+        <p th:text="${book.title}"></p>
+        <p th:text="${book.description}"></p>
+        <p th:src="${book.image}" width="500px" height="500px"></p>
+    </div>
+</body>
+</html>

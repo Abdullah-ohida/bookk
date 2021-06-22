@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+<div class="books">
+    <h1>Book Search result</h1>
+    <div class="book-detail" th:each="book:${books}">
+        <img th:src="${book.image}" alt="book">
+        <p th:text="${book.title}"></p>
+        <p th:text="${book.description}"></p>
+        <p th:src="${book.image}" width="500px" height="500px"></p>
+        <a th:href="@{/book/{id}(id = ${book.id})}">View more</a>
+    </div>
+</div>
+</body>
+</html>

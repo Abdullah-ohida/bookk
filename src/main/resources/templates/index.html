@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Rubik&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav>
+    <h1 class="logo">BookShelter</h1>
+
+    <form th:action="@{/book/all}">
+        <input type="search" placeholder="search book" th:name="title">
+        <input type="submit" th:value="Search">
+    </form>
+
+</nav>
+
+<div class="book-cover">
+    <div class="book-detail" th:each="book:${books}">
+        <img th:src="${book.image}" alt="book">
+        <p th:text="${book.title}"></p>
+        <a th:href="@{/book/{id}(id = ${book.id})}">View more</a>
+    </div>
+</div>
+
+</body>
+</html>
