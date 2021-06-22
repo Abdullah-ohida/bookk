@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/book.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Rubik&display=swap" rel="stylesheet">
+    <title>Book</title>
+</head>
+<body>
+
+<nav>
+    <h1 class="logo"><a th:href="@{/}">BookShelter</a></h1>
+
+    <form th:action="@{/book/all}">
+        <input type="search" placeholder="search book" th:name="title">
+        <input type="submit" th:value="Search">
+    </form>
+
+</nav>
+
+    <div class="cover">
+        <div class="prev">
+            <h2 th:text="${book.title}"></h2>
+            <a th:href="${book.previewLink}">Preview</a>
+        </div>
+        <img th:src="${book.image}" alt="book">
+        <p class="book-desc" th:text="${book.description}"></p>
+        <p th:src="${book.image}" width="500px" height="500px"></p>
+
+        <div class="book-details">
+            <p>Author: <span th:text="${book.authors}"></span></p>
+            <p>Publisher: <span th:text="${book.publisher}"></span></p>
+        </div>
+    </div>
+
+
+</body>
+</html>

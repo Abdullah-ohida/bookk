@@ -1,0 +1,65 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{
+    background: #F8FAFD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.cover{
+    padding: 2rem;
+    width: 70%;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.book-desc{
+    line-height: 2;
+    margin-top: 2rem;
+}
+
+span{
+    background: rgba(13, 117, 255, 0.09);
+    border-radius: 30px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #0D75FF;
+}
+
+h2{
+    line-height: 2;
+}
+
+a{
+    background: rgba(13, 117, 255, 0.05);
+    border-radius: 30px;
+    color: rgba(13, 117, 255, 1);
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+
+}
+
+.prev{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.book-details{
+    margin-top: 2rem;
+}
+
+.book-details *{
+    line-height: 1.5;
+}
